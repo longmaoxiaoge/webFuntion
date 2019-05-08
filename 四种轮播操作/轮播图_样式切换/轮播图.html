@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script src="./js/jquery3.4.0压缩.js"></script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.container{
+				width: 60%;
+				height: 500px;
+				border: 1px solid saddlebrown;
+				margin: 100px auto;
+				position: relative;
+				
+			}
+			.center{
+				width: 100%;
+				height: 100%;
+			}
+			.center img{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.center img{
+				display: none;
+			}
+			.container .active{
+				display: block;
+			}
+		
+			ul{
+				width: 30%;
+				height: 20px;
+		         position: absolute;
+				left: 35%;
+				bottom: 20px;
+				display: flex;
+				justify-content: space-around;
+				
+			}
+			ul li{
+				
+				width: 15px;
+				height: 15px;
+				border: 1px solid silver;
+				border-radius:50% ;
+				background-color: slategray;
+				cursor: pointer;
+			}
+
+			.active_dot{
+				background-color: red;
+			}
+			.left{
+				width: 120px;
+				height: 120px;
+				background-color: #5F9EA0;
+				position: absolute;
+				top: 35%;
+				left: 3%;
+				opacity: 0.08;
+				background: url(img/left-blue-arrow-clip-art_f.jpg) no-repeat;
+				background-size: 120px;
+				cursor: pointer;
+				border: 1px solid silver;
+				border-radius: 50%;
+			}
+				.right{
+				width: 120px;
+				height: 120px;
+				position: absolute;
+				right: 3%;
+				top: 35%;
+					opacity: 0.08;
+				background: url(img/right-blue-arrow-clip-art_f.jpg) no-repeat;
+				background-size: 120px;
+				cursor: pointer;
+				border: 1px solid silver;
+				border-radius: 50%;
+			}
+			.left:hover{
+				opacity: 1;
+			}
+			.right:hover{
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="center">
+				<img class="active" src="https://img.zcool.cn/community/01146a58eb8c7ba8012049ef73ce86.jpg@1280w_1l_2o_100sh.jpg" />
+			
+			
+				<img src="https://img5.dwstatic.com/news/1412/282049875908/282049875966.jpg" />
+			
+			
+				<img src="http://pic1.win4000.com/wallpaper/a/56459e3d91fa3.jpg" />
+			
+			
+				<img src="https://images.17173.com/game/2007/09/17/20070917143922277.jpg" />
+			</div>
+			
+			
+			
+			<ul>
+				<li class="active_dot"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+			<div class="left">
+				
+			</div>
+			<div class="right">
+				
+			</div>
+		</div>
+		
+		
+		<script>
+// 			//执行后加载
+// 			window.onload = function(){
+// 				//获取元素
+// 			var Arrimg = document.querySelectorAll("img"); //获取全部图片元素
+// 			var Center = document.querySelector(".container");	
+// 			var ArrLi = document.querySelectorAll("li");//获取全部li元素
+// 			var Left = document.querySelector(".left");//获取左键元素
+// 			var Right = document.querySelector(".right");//获取右键元素
+// 			var timer = null //定义定时器
+// 			var ind = "";
+// 			
+// 			//循环绑定圆点切换
+// 			for (var i =0;i<ArrLi.length;i++) {
+// 				
+// 				//另存下标
+// 				ArrLi[i].index = i;
+// 				//绑定点击事件
+// 				ArrLi[i].onclick = function(){
+// 					
+// 					//重置样式
+// 					acCss();
+// 					
+// 					//激活样式
+// 					atCss(this.index);
+// 					
+// 					//将对应下标赋值
+// 					ind = this.index;
+// 					
+// 					
+// 				}
+// 				
+// 			}
+// 			
+// 			         //绑定左键事件
+// 			    Left.onclick = function(){
+// 			    	if( ind == 0){
+// 			    		ind = ArrLi.length-1;
+// 			    	}else{
+// 			    		
+// 			    		ind--;
+// 			    		
+// 			    	}
+// 			    	//重置样式
+// 					acCss();
+// 					
+// 					//激活样式
+// 					atCss(ind);
+// 			    }
+// 			         
+// 			//绑定点击事件
+// 			Right.onclick = Ri;
+// 			
+// 			//开启定时器
+// 			
+// 			//清除
+// 			clearInterval(timer);
+// 			
+// 			timer = setInterval(Ri,1000);
+// 			
+// 			//鼠标移入事件
+// 			Center.onmouseover = function(){
+// 				clearInterval(timer);
+// 			}
+// 			//鼠标移出事件
+// 			Center.onmouseout = function(){
+// 				clearInterval(timer);
+// 				timer = setInterval(Ri,1000);
+// 			}
+// 			
+// 			
+// 			
+// 			
+//                //右键切换事件
+//                function  Ri(){
+//                	if( ind == ArrLi.length-1){
+// 			    		ind = 0;
+// 			    	}else{
+// 			    		
+// 			    		ind++;
+// 			    		
+// 			    	}
+// 			    	//重置样式
+// 					acCss();
+// 					
+// 					//激活样式
+// 					atCss(ind);
+//                	
+//                }
+//                
+//                
+// 			   //重置样式
+// 			   function acCss(){
+// 			   	for ( var j = 0;j<ArrLi.length;j++) {
+// 			   		ArrLi[j].className ="";
+// 			   		Arrimg[j].className="";
+// 			   		
+// 			   	}
+// 			   	
+// 			   }
+// 			   	//激活样式
+// 			   	
+// 			   	function atCss(a){
+// 			   		ArrLi[a].className ="active_dot";
+// 			   		Arrimg[a].className="active";
+// 			   		
+// 			   	}
+// 			   	
+// 			   	
+// 			  
+// 			
+// 			
+// 			
+// 			}
+                   $(function(){
+					   var ind = "";
+					   var timer = null //定义定时器
+					   
+					   
+			//绑定li切换图片
+				$("li").click(function(){
+ 				$("li").removeClass("active_dot");
+                $(this).addClass("active_dot");
+				   ind = $(this).index();
+				   $("img").removeClass("active");
+				  $("img").eq(ind).addClass("active");
+					
+				})  
+			//绑定左键事件
+				$(".left").click(function(){
+					if(ind == 0){
+						ind = $("li").length-1
+					}else{
+						ind--;
+					}
+					acCss();
+					
+					
+					 atCss(ind);
+					
+					
+				})	
+				
+			//右键切换事件
+			$(".right").click(Ri);
+			
+			
+			function Ri(){
+				if( ind == $("li").length-1){
+					ind = 0;
+					}else{
+						ind++;
+						}
+						acCss();
+						
+						
+						 atCss(ind);
+						
+			}
+					clearInterval(timer);
+					   timer = setInterval(Ri,1000);
+					   
+					   
+					   
+                   //重置样式
+					   function acCss(){
+					   $("li").removeClass("active_dot");
+					   $("img").removeClass("active");
+					   }
+					   
+					  	//激活样式 
+					   function atCss(a){
+					   
+					     $("img").eq(a).addClass("active");
+					   $("li").eq(a).addClass("active_dot");
+					   }
+					   
+				   })
+		
+			   
+		</script>
+	</body>
+</html>

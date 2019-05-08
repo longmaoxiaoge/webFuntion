@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="font_2oz9iil6m6/iconfont.css" />
+		
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				border: none;
+			}
+			img{
+				vertical-align: top;
+				
+			}
+			body{
+				background-color: #000000;
+			}
+			#slider{
+				width: 1200px;
+				height: 460px;
+				margin: 100px auto;
+				position: relative;
+				
+			
+			}
+			#slider_ctl{
+				opacity: 0;
+			}
+			#slider li{
+				position: absolute;
+				left: 200px;
+				top: 0;
+				
+			}
+			#slider li img{
+				width: 100%;
+				height: 100%;
+				
+			}
+			.slider_ctl_next,.slider_ctl_prev{
+				
+			width: 76px;
+			height: 112px;
+			position: absolute;
+			top: 50%;
+			margin-top: -56px;
+			z-index: 99;
+			}
+			.slider_ctl_prev{
+				font-size: 103px;
+				cursor: pointer;
+				left: 0;
+			}
+			.slider_ctl_next{
+				font-size: 103px;
+				cursor: pointer;
+				right: 0;
+				
+				.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="slider">
+			<ul id="slider_main">
+				<li><img src="img/poster-1.jpg"></li>
+				<li><img src="img/poster-2.jpg"></li>
+				<li><img src="img/poster-3.jpg"></li>
+				<li><img src="img/poster-4.jpg"></li>
+				<li><img src="img/poster-5.jpg"></li>
+			</ul>
+			<div id="slider_ctl">
+				<span class="slider_ctl_prev iconfont">&#xe639;</span>
+				<span class="slider_ctl_next iconfont">&#xe66b;</span>
+			</div>
+			
+		</div>
+		
+		
+		<script src="基本函数封装/函数封装.js"></script>
+		<script>//加载后执行
+window.onload=function() {
+	//获取需要的标签
+	var slider=one_name("#slider");
+	var slider_main=one_name("#slider_main");
+	var allLis=slider_main.children;
+	var slider_ctl=one_name("#slider_ctl");
+	//设置指示器的显示和隐藏
+	slider.onmouseover=function() {
+		buffer(slider_ctl, {
+			"opacity": 1
+		}
+		);
+	}
+	;
+	slider.onmouseout=function() {
+		buffer(slider_ctl, {
+			"opacity": 0.01
+		}
+		);
+	}
+	;
+	var json=[ {
+		//1
+		"width": 400, "top": 20, "left": 50, "opacity": 0.2, "zIndex": 2
+	}
+	,
+	{
+		//2
+		"width": 600, "top": 70, "left": 0, "opacity": 0.8, "zIndex": 3
+	}
+	,
+	{
+		//3
+		"width": 800, "top": 100, "left": 200, "opacity": 1, "zIndex": 5
+	}
+	,
+	{
+		//4
+		"width": 600, "top": 70, "left": 600, "opacity": 0.8, "zIndex": 3
+	}
+	,
+	{
+		//5
+		"width": 400, "top": 20, "left": 750, "opacity": 0.2, "zIndex": 2
+	}
+	];
+	for(var i=0;i < json.length;i++) {
+		buffer(allLis[i], json[i]);
+	}
+	//监听点击
+	for(var j=0;
+	j < slider_ctl.children.length;
+	j++) {
+		var item=slider_ctl.children[j];
+		item.onclick=function() {
+			if(this.className==="slider_ctl_prev") {
+				//左边
+				json.push(json.shift());
+			}
+			else {
+				//右边
+				json.unshift(json.pop());
+			}
+			//重新布局
+			for(var j=0;
+			j < json.length;
+			j++) {
+				buffer(allLis[j], json[j]);
+			}
+		}
+	}
+}</script>
+		<script src="font_2oz9iil6m6/iconfont.js"></script>
+	</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				border: none;
+				
+			}
+			img{
+				vertical-align: top;
+			}
+			.slider{
+				width: 640px;
+				height: 340px;
+				position: relative;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			.slider-scroll{
+				width: 640px;
+				height: 300px;
+				position: relative;
+			}
+			.slider-main{
+				width: 1280px;
+				height: 300px;
+				background-color: #2E8B57;
+			}
+			.slider-main-img{
+				width: 640px;
+				height: 300px;
+				position: absolute;
+			}
+			.slider-main-img img{
+				width: 100%;
+				height: 100%;
+			}
+			.slider-ctl{
+				cursor: pointer;
+				text-align: center;
+			}
+			.slider-ctl-prev,.slider-ctl-next{
+				background-color: darkblue;
+				height: 34px;
+				width: 20px;
+				position: absolute;
+				top: 50%;
+				margin-top: -35px;
+			}
+			.slider-ctl-prev{
+				left: 5px;
+			}
+			.slider-ctl-next{
+				right: 5px;
+			}
+			.slider-ctl-icon{
+				width: 24px;
+				height: 5px;
+				display: inline-block;
+				background-color: silver;
+				margin: 15px;
+				text-indent: 50em;
+			}
+			.current{
+				background: red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="slider" class="slider">
+			<div id="slider_scoll" class="slider-scroll">
+				<div class="slider-main" id="slider_main">
+				<div class="slider-main-img">
+					<a href="">
+						<img src="轮播图素材/0.jpg" />
+					</a>
+				</div>
+				<div class="slider-main-img">
+					<a href="">
+						<img src="轮播图素材/1.jpg" />
+					</a>
+				</div>
+				<div class="slider-main-img">
+					<a href="">
+						<img src="轮播图素材/2.jpg" />
+					</a>
+				</div>
+				<div class="slider-main-img">
+					<a href="">
+						<img src="轮播图素材/3.jpg" />
+					</a>
+				</div>
+				<div class="slider-main-img">
+					<a href="">
+						<img src="轮播图素材/4.jpg" />
+					</a>
+				</div>
+				
+			
+				
+			</div>
+			
+			</div>
+			<div class="slider-ctl" id="slider_ctl">
+				<span class="slider-ctl-prev"></span>
+				
+				
+				
+				<span class="slider-ctl-next"></span>
+				
+				
+			</div>
+			
+			
+		</div>
+		
+		
+		
+		<script src="基本函数封装/函数封装.js"></script>
+		
+		<script>
+			//加载后执行
+			window.onload = function(){
+				//获取需要的标签
+				var slider = one_name("#slider");
+				var slider_main = one_name("#slider_main");
+				var slider_main_img = slider_main.children;
+				var slider_ctl = slider.children[1];
+				var iNow = 0;
+				
+				//创建导航
+				for(var i=0;i<slider_main_img.length;i++){
+					var span = document.createElement("span");
+					span.className = "slider-ctl-icon";
+					span.innerText = slider_main_img.length - i -1;
+					slider_ctl.insertBefore(span,slider_ctl.children[1]);
+				}
+				//导航第一个默认选中
+				slider_ctl.children[1].className = "slider-ctl-icon current";
+				
+				//滚动内容归位
+				var scroll_w = slider.offsetWidth;
+				for (var j=1;j<slider_main_img.length;j++) {
+					slider_main_img[j].style.left = scroll_w +"px";
+				}
+				
+				//遍历监听操作
+				var slider_ctl_child = slider_ctl.children;
+				for(var i=0;i<slider_ctl_child.length;i++){
+					//监听点击
+					
+					slider_ctl_child[i].onmousedown = function(){
+						//判断点击
+						if (this.className ==="slider-ctl-prev") { //左边
+							/* 
+							 1.当前可视区域图片快速右移
+							 2.上一张图片快速出现在可视区域左边
+							 3.让上一张图片做动画进入
+							 */
+							buffer(slider_main_img[iNow],{"left":scroll_w});
+							iNow--;
+							//判断
+							if (iNow <0) {
+								iNow = slider_main_img.length - 1;
+							}
+							slider_main_img[iNow].style.left = -scroll_w + "px";
+							buffer(slider_main_img[iNow],{"left":0});
+							
+						}else if (this.className ==="slider-ctl-next") { //右边
+							
+							autoPlay();
+						}else{ //下边
+							/* 
+							 1.当前点击索引和选中索引对比
+							 2.点击的>选中的，相当于点击了右边的按钮
+							 3.点击的<选中的，相当于点击了左边的按钮
+							 */
+							
+							//获取索引
+							var index = parseInt(this.innerText);
+							//对比
+							if(index>iNow){
+							buffer(slider_main_img[iNow],{"left":-scroll_w});
+							slider_main_img[index].style.left = scroll_w + "px";
+							
+							}else if(index<iNow){
+								buffer(slider_main_img[iNow],{"left":scroll_w});
+						
+							slider_main_img[index].style.left = -scroll_w + "px";
+							
+
+
+							}
+							iNow= index;
+							buffer(slider_main_img[iNow],{"left":0});
+						}
+						changeIndex();
+					}
+					
+				}
+			
+			//切换索引
+			function changeIndex(){
+				for (var i=1;i<slider_ctl_child.length-1;i++) {
+					slider_ctl_child[i].className="slider-ctl-icon";
+				}
+				slider_ctl_child[iNow+1].className="slider-ctl-icon current";
+			}
+			
+			//自动播放
+			var timer = setInterval(autoPlay,1000);
+			function autoPlay(){
+				/* 
+							 1.当前可视区域图片快速左移
+							 2.上一张图片快速出现在可视区域右边
+							 3.让这张图片做动画进入
+							 */
+							buffer(slider_main_img[iNow],{"left":-scroll_w});
+							iNow++;
+							//判断
+							if (iNow >=slider_main_img.length) {
+								iNow = 0;
+							}
+							slider_main_img[iNow].style.left = scroll_w + "px";
+							buffer(slider_main_img[iNow],{"left":0});
+							
+							changeIndex();
+				
+			}
+			
+			//设置清除定时器
+			slider.onmouseover = function(){
+				clearInterval(timer);
+			}
+			slider.onmouseout = function(){
+				timer = setInterval(autoPlay,1000);
+			}
+			
+			
+			
+			
+			
+			
+			
+			}
+			
+		</script>
+	</body>
+</html>
