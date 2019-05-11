@@ -1,0 +1,24 @@
+<style>
+	.tabs{
+		height: 49px;
+		border-bottom: 1px solid #F2F3F5;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.tabs li{
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.tabs li.active{
+		color: #FF5F16;
+		border-bottom: 2px solid #ff5f16;
+	}
+</style>
+<ul class="tabs">
+	{{each list val}}
+	<li>{{val}}</li>
+	{{/each}}
+</ul>

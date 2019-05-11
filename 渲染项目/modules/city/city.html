@@ -1,0 +1,309 @@
+
+	<style>
+
+		.menban_4{
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background-color: #F4F4F4;
+			z-index: 3;
+			overflow: auto;
+			font-size: 16px;
+		}
+		.box{
+			width: 100%;
+			position: relative;
+		}
+			.citytop{
+			width: 100%;
+			height: 44px;
+			background-color: white;
+			padding: 12px;
+			padding-left: 10px;
+			box-sizing: border-box;
+		}
+			.citytop>span:nth-child(1){
+			width: 44px;
+			height: 100%;
+			font-size: 20px;
+			color: #989B9F;
+			
+		}
+		.citytop>span:nth-child(2){
+			width: 44px;
+			height: 100%;
+			font-size: 18px;
+			margin-left: 36%;
+		}
+		.citySuosou{
+			width: 90%;
+			height: 30px;
+			margin: 5px 10px 5px 20px;
+			background-color: white;
+			border-radius:5px;
+		}
+		.citySuosou>span:nth-child(1){
+			font-size: 20px;
+			margin: 11px;
+		}
+		.citySuosou>input{
+			width: 80%;
+			height: 20px;
+			border: none;
+		}
+		.GPSRM{
+			width: 100%;
+			height: 160px;
+			background-color: white;
+		}
+		.GPSRM>p{
+			font-size: 14px;
+			color: #989B9F;
+		}
+		.GPSRM>span{
+			display: inline-block;
+			width: 112px;
+			height: 30px;
+			background-color: #F4F4F4;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 3px;
+			margin: 6px;
+		}
+		.a{
+			width: 90%;
+			height: 20px;
+		font-size: 15px;
+		padding-left: 22px;
+		box-sizing: border-box;
+		}
+		.Acity_a{
+			width: 100%;
+			background-color: white;
+			padding-left: 32px;
+			box-sizing: border-box;
+			
+			margin: 2px;
+		}
+		.Acity_a>p{
+			width: 100%;
+			
+			position: relative;
+			margin: 10px;
+			box-sizing: border-box;
+		}
+		.Acity_a>p::before{		
+			content: " ";
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			height: 1px;
+			border-top: 1px solid #ededed;
+			color: #ededed;
+			transform-origin: 0 0;
+			transform: scaleY(.5);
+			
+		}
+		.daohang{
+			position: fixed;
+			width: 10px;
+			word-wrap: break-word;
+			right: 10px;
+			background-color: white;
+			z-index: 100;
+			top: 180px;
+			font-size: 12px;
+		}
+		
+	</style>
+
+	
+		<div class="menban_4">
+			<div class="box">
+			<div class="citytop">
+				<span>X</span><span>当前城市 -</span>
+			</div>
+			<div class="citySuosou">
+				<span class="iconfont">&#xe624;</span><input type="search" placeholder="输入城市名或拼音" />
+			</div>
+				<div class="GPSRM">
+					<p>GPS定位你所在的位置</p>
+					<span>定位失败</span>
+					<p>热门城市</p>
+					<span>北京</span>
+					<span>上海</span>
+					<span>广州</span>
+					<span>深圳</span>
+				</div>
+				<div class="daohang">
+					ABCDEFGHJKLMNPQRSTWXUZ
+				</div>
+				
+				
+			<p class="a">A</p>
+			
+			<div class="Acity_a">
+				<p>阿拉善盟</p>
+				<p>鞍山</p>
+				<p>安庆</p>
+				<p>安阳</p>
+			</div>
+			
+				<p class="a">B</p>
+			<div class="Acity_a">
+				<p>北京</p>
+				<p>保定</p>
+				<p>包头</p>
+				<p>白山</p>
+			</div>
+			
+				<p class="a">C</p>
+				<div class="Acity_a">
+					<p>长治</p>
+					<p>常州</p>
+					<p>长沙</p>
+					<p>常德</p>
+				</div>
+			<p class="a">D</p>
+			<div class="Acity_a">
+				<p>大连</p>
+				<p>丹东</p>
+				<p>德州</p>
+				<p>东莞</p>
+				<p>达州</p>
+			</div>
+			<p class="a">E</p>
+			<div class="Acity_a">
+				<p>鄂尔多斯</p>
+				<p>鄂州</p>
+				<p>恩施土家族自治州</p>
+			</div>
+			<p class="a">F</p>
+			<div class="Acity_a">
+				<p>抚顺</p>
+				<p>福州</p>
+				<p>佛山</p>
+				<p>防城港</p>
+			</div>
+			<p class="a">G</p>
+			<div class="Acity_a">
+				<p>广州</p>
+				<p>桂林</p>
+				<p>贵港</p>
+			</div>
+			<p class="a">H</p>
+			<div class="Acity_a">
+				<p>呼伦贝尔</p>
+				<p>葫芦岛</p>
+				<p>哈尔滨</p>
+				<p>黑河</p>
+			</div>
+			
+			<p class="a">J</p>
+			<div class="Acity_a">
+				<p>济宁</p>
+				<p>焦作</p>
+				<p>荆州</p>
+				<p>江门</p>
+			</div>
+			<p class="a">K</p>
+			<div class="Acity_a">
+				<p>开封</p>
+				<p>昆明</p>
+				<p>克拉玛依</p>
+				
+			</div>
+			<p class="a">L</p>
+			<div class="Acity_a">
+				<p>吕梁</p>
+				<p>辽阳</p>
+				<p>连云港</p>
+				<p>丽水</p>
+			</div>
+			<p class="a">M</p>
+			<div class="Acity_a">
+				<p>穆江丹</p>
+				<p>梅州</p>
+				<p>眉山</p>
+				<p>绵阳</p>
+			</div>
+			<p class="a">N</p>
+			<div class="Acity_a">
+				<p>南京</p>
+				<p>南通</p>
+				<p>宁波</p>
+				<p>南平</p>
+			</div>
+			<p class="a">P</p>
+			<div class="Acity_a">
+				<p>莆田</p>
+				<p>平顶山</p>
+				<p>普洱</p>
+			</div>
+			<p class="a">Q</p>
+			<div class="Acity_a">
+				<p>秦皇岛</p>
+				<p>泉州</p>
+				<p>青岛</p>
+				<p>钦州</p>
+				<p>七台河</p>
+			</div>
+			<p class="a">R</p>
+			<div class="Acity_a">
+				<p>日照</p>
+				
+			</div>
+
+			<p class="a">S</p>
+			<div class="Acity_a">
+				<p>沈阳</p>
+				<p>四平</p>
+				<p>上海</p>
+				<p>苏州</p>
+				<p>宿州</p>
+			</div>
+			<p class="a">T</p>
+			<div class="Acity_a">
+				<p>天津</p>
+				<p>太原</p>
+				<p>台州</p>
+				<p>秦安</p>
+			</div>
+			<p class="a">W</p>
+			<div class="Acity_a">
+			<p>无锡</p>
+			<p>武汉</p>
+			<p>渭南</p>
+			<p>芜湖</p>
+			</div>
+			
+			<p class="a">X</p>
+			<div class="Acity_a">
+			<p>邢台</p>
+			<p>徐州</p>
+			<p>信阳</p>
+			<p>襄阳</p>
+			</div>
+			<p class="a">Y</p>
+			<div class="Acity_a">
+			<p>营口</p>
+			<p>盐城</p>
+			<p>扬州</p>
+			<p>烟台</p>
+			</div>
+			<p class="a">Z</p>
+			<div class="Acity_a">
+			<p>舟山</p>
+			<p>镇江</p>
+			<p>郑州</p>
+			<p>周口</p>
+			</div>
+			
+			
+			</div>
+		</div>
+			
+	

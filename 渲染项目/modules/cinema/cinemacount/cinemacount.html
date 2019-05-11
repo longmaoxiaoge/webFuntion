@@ -1,0 +1,90 @@
+<style>
+		*{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.lit{
+			width: 100%;
+			height: 75px;
+			padding-left: 15px;
+			
+			box-sizing: border-box;
+			font-size: 13px;
+			position: relative;
+		}
+		.lit .left{
+			width: 65%;
+			height: 75px;
+			float: left;
+			display: flex;
+			flex-flow: column;
+			justify-content: center;
+		
+		}
+		.lit .left>p:nth-of-type(1){
+			margin-bottom: 5px;
+			
+			font-size: 16px;
+		
+		}
+		.lit .left>p:nth-of-type(2){
+			color: #797d82;
+			font-size: 12px;
+			width: 230px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.lit .right{
+			margin-left: 36px;
+			width: 25%;
+			height: 75px;
+			float: left;
+			display: flex;
+			flex-flow: column;
+			justify-content: center;
+			text-align: center;
+		}
+		.lit .right>p:nth-of-type(1){
+			margin-bottom: 5px;
+			color: orangered;
+		}
+		.lit .right>p:nth-of-type(2){
+			color: #797d82;
+		}
+		.lit:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #ededed;
+    color: #ededed;
+    -webkit-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(.5);
+    -ms-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+	</style>
+	
+
+		{{each cinemas val}}
+		
+		<div class="lit">
+			<div class="left">
+				<p>{{val.name}}</p>
+				<p>{{val.address}}</p>
+			</div>
+			<div class="right">
+				<p>￥{{(val.lowPrice/100)}}元起</p>
+				<p>距离未知</p>
+			</div>
+		</div>
+		
+		{{/each}}
+		
+		

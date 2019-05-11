@@ -1,0 +1,38 @@
+<style>
+	.tabbar{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		position: relative;
+		background: #fff;
+		z-index: 10;
+	}
+	.tabbar::before{
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		height: 1px;
+		border-top: 1px solid #ededed;
+		color: #ededed;
+		transform-origin: 0 0;
+		transform: scaleY(.5);
+	}
+	.tabbar li{
+		width: 20%;
+		color: #797d82;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 15px;
+	}
+	.tabbar li.active{
+		color: #ff5f16;
+	}
+</style>
+<ul class="tabbar">
+	{{each list val}}
+	<li>{{val.title}}</li>
+	{{/each}}
+</ul>
